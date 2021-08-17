@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,15 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./property-add.component.css']
 })
 export class PropertyAddComponent implements OnInit {
+  @ViewChild('Form') addPropertyForm: NgForm;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  onBack()
-  {
-    this.router.navigate(['/']);
+  // Back to a specific component when the user clicks a back link
+  // onBack()
+  // {
+  //   this.router.navigate(['/']);
+  // }
+
+  onSubmit(Form: NgForm){
+    console.log("Form submitted");
+    console.log(this.addPropertyForm)
   }
 
 }

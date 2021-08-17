@@ -20,6 +20,7 @@ h1 {
   transition-duration: 500ms;
   transition-timing-function: ease-out;
   height: 300px;
+  width: auto;
 }
 
 .member-icons{
