@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-12">
+            <label for="userName" class="form-label">Username</label>
+            <input type="text" class="text form-control" formControlName="userName">
+            <span class="error-block" *ngIf="!registrationForm.get('userName').valid && registrationForm.get('userName').touched">
+              The username field is required.
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="text form-control" formControlName="email">
+            <span class="error-block" *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
+              <span *ngIf="registrationForm.get('email').hasError('required')">
+                The email field is required.
+              </span>
+              <span *ngIf="registrationForm.get('email').hasError('email')">
+                The email field should contain a valid email address.
+              </span>
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="phone" class="text form-control" formControlName="phone">
+            <span class="error-block" *ngIf="!registrationForm.get('phone').valid && registrationForm.get('phone').touched">
+              <span *ngIf="registrationForm.get('phone').errors.required">
+                The phone field is required.
+              </span>
+              <span *ngIf="registrationForm.get('phone').errors.maxlength">
+                The phone field must not contain more than 20 characters.
+              </span>
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="text form-control" formControlName="password">
+            <span *ngIf="!registrationForm.get('password').valid && registrationForm.get('password').touched" class="error-block" >
+              <span *ngIf="registrationForm.get('password').errors.required">
+                The password field is required.
+              </span>
+              <span *ngIf="registrationForm.get('password').errors.minlength">
+                The password field must contain more than 8 characters.
+              </span>
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="text form-control" formControlName="confirmPassword">
+            <span class="error-block" *ngIf="!registrationForm.get('confirmPassword').valid && registrationForm.get('confirmPassword').touched">
+              <span *ngIf="registrationForm.get('confirmPassword').errors.required">
+                The password confirmation field is required.
+              </span>
+            </span>
+            <span class="error-block" *ngIf="registrationForm.hasError('notMatched') && registrationForm.get('confirmPassword').valid">
+              Passwords don't match.
+            </span>
+          </div>
+          <div class="form-group col-12">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-default">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
