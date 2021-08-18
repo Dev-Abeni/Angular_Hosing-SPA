@@ -11,8 +11,10 @@
     "sourceMap": true,
     "declaration": false,
 
-    // Added to prevent the compiler following strict intialization of variables
+    // Prevents the compiler from checking strict variable intialization
     "strictPropertyInitialization": false,
+    // Prevents the compiler from checking strict nulls
+    "strictNullChecks": false,
 
     "downlevelIteration": true,
     "experimentalDecorators": true,
